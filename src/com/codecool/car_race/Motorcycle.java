@@ -1,6 +1,7 @@
 package com.codecool.car_race;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Motorcycle extends Vehicle {
     private String name;
@@ -34,7 +35,7 @@ public class Motorcycle extends Vehicle {
 
     @Override
     public void distanceTraveled() {
-        System.out.println(this.name + " traveled in 1 hour " + this.distance + " km with the speed " + this.speed + " km/h");
+        System.out.println("Motorcycle " + this.name.toUpperCase() + " total distance: " + this.distance + " km. Last lap speed: " + this.speed + " km/h");
     }
 
     @Override
@@ -44,8 +45,20 @@ public class Motorcycle extends Vehicle {
 
     @Override
     public void moveForAnHour() {
+        Weather weather = new Weather();
+        boolean rain = weather.isRaining();
+        if (rain){
+            int lowerSpeed = ThreadLocalRandom.current().nextInt(5, 51);
+            this.speed = this.speed -lowerSpeed;
+            if (this.speed >= 0){
+                this.distance += this.speed;
+            }else{
+                this.speed = 0;
+                this.distance += this.speed;
+            }
+        }
         this.distance += this.speed;
-        distanceTraveled();
+//        distanceTraveled();
     }
 
     @Override

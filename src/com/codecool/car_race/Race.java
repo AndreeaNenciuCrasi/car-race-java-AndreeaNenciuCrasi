@@ -9,13 +9,33 @@ public class Race {
         this.competitors = new ArrayList<Vehicle>();
     }
 
-    public void addCompetitor(Vehicle vehicle){
+    public void registerRacer(Vehicle vehicle){
         this.competitors.add(vehicle);
-
     }
 
     public ArrayList<Vehicle> getCompetitors() {
         return competitors;
+    }
+
+    public void simulateRace(){
+        int hour = 1;
+        while (hour < 51){
+//            System.out.println(hour + " LAP:");
+            for(Vehicle vehicle: this.competitors){
+                vehicle.moveForAnHour();
+            }
+            hour++;
+        }
+    }
+
+    public void printRaceResults() {
+        System.out.println("~~~~~~~~~~RACE RESULTS~~~~~~~~~~~~~~~");
+//        for (Vehicle vehicle : this.competitors) {
+////            vehicle.distanceTraveled();
+//        }
+        for (Vehicle vehicle : this.competitors) {
+            System.out.println(vehicle);
+        }
     }
 
     @Override

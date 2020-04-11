@@ -27,7 +27,7 @@ public class Truck extends Vehicle{
 
     @Override
     public void distanceTraveled() {
-        System.out.println(this.name + " traveled in 1 hour " + this.distance + " km with the speed " + this.speed + " km/h");
+        System.out.println("Truck " + this.name.toUpperCase() + " total distance: " + this.distance + " km. Last lap speed: " + this.speed + " km/h");
     }
 
     @Override
@@ -37,8 +37,16 @@ public class Truck extends Vehicle{
 
     @Override
     public void moveForAnHour() {
-        this.distance += this.speed;
-        distanceTraveled();
+        int breakingChance = ThreadLocalRandom.current().nextInt(0, 101);
+        if (breakingChance > 5) {
+            this.speed = 100;
+            this.distance += this.speed;
+//            distanceTraveled();
+        } else {
+                this.speed = 0;
+                this.distance += 0;
+//                distanceTraveled();
+            }
     }
 
     @Override

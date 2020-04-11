@@ -9,14 +9,13 @@ public class Main {
     private static void createVehicles(Race race) {
         for (int i=1; i < 11; i++){
             Car car = new Car();
-            race.addCompetitor(car);
+            race.registerRacer(car);
             Motorcycle motorcycle = new Motorcycle();
-            race.addCompetitor(motorcycle);
+            race.registerRacer(motorcycle);
             Truck truck = new Truck();
-            race.addCompetitor(truck);
+            race.registerRacer(truck);
         }
 
-        System.out.println(race.getCompetitors());
     }
 
     /**
@@ -31,8 +30,12 @@ public class Main {
         Race race = new Race();
         createVehicles(race);
 
-//        race.simulateRace();
-//        race.printRaceResults();
+//        System.out.println("~~~~~~~~~~~~RACERS~~~~~~~~~~~~```` ");
+//        for(Vehicle vehicle: race.getCompetitors()){
+//            System.out.println(vehicle);
+//        }
+        race.simulateRace();
+        race.printRaceResults();
 
     }
 }
